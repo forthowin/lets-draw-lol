@@ -1,0 +1,46 @@
+$(document).ready(function(){
+  var a=false;var b,c="";var d=document.getElementById("canvas-area");
+  var time_flag = true;
+  var e=d.getContext("2d");e.strokeStyle="black";
+  e.lineWidth=3;e.lineCap="round";
+  e.fillStyle="#fff";e.fillRect(0,0,d.width,d.height);
+  $("#clr > div").click(function(){e.strokeStyle=$(this).css("background-color")});
+  $("#canvas-area").mousedown(function(d){a=true;e.save();b=d.pageX-this.offsetLeft;c=d.pageY-this.offsetTop});
+
+  $(document).mouseup(function(){a=false});
+  $(document).click(function(){a=false});
+
+  $("#canvas-area").mousemove(function(d){
+    if(a==true && time_flag==true){
+      e.beginPath();
+      e.moveTo(d.pageX-this.offsetLeft,d.pageY-this.offsetTop);
+      e.lineTo(b,c);
+      e.stroke();
+      e.closePath();
+      b=d.pageX-this.offsetLeft;
+      c=d.pageY-this.offsetTop
+    }
+  });
+
+  $("#champion-picture").attr("src", "<%= @champion.image %>");
+  $("#champion-name").html("<%= @champion.name %>");
+
+  var time = $("#start-button")
+  time.attr("disabled", true);
+
+  time.val(60);
+
+  var countDown = function() {
+    time.val(parseFloat(time.val()) - 1);
+    if(parseFloat(time.val()) <= 0) {
+      window.clearInterval(timer);
+      time.removeAttr("disabled");
+      time_flag = false;
+      time.val("Draw Again!");
+    }
+  }
+
+  var timer = window.setInterval(countDown, 1000);
+});
+
+
