@@ -1,2 +1,10 @@
-%img{src: @champion.image, alt: "Splash art of #{@champion.name}", class: 'image-container'}
-%h3= @champion.name
+.image-area
+  .image-name
+    %img{src: @champion.image, alt: "Splash art of #{@champion.name}", class: 'image-container', width: '500px'}
+    %h3#champion-name= @champion.name
+
+  #timer-button
+    = form_tag('#', remote: true) do
+      = submit_tag 'Start!', class: 'btn btn-success btn-lg'
+
+  %canvas#draw-area{width: '500px', height: '295px'}
