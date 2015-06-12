@@ -9,6 +9,7 @@ gem 'jquery-rails'
 gem 'figaro'
 gem 'haml'
 gem 'nokogiri'
+gem 'bootstrap-sass', '~> 3.3.4'
 
 gem 'sdoc', '~> 0.4.0',          group: :doc
 
