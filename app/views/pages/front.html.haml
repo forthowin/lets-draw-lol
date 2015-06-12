@@ -1,16 +1,16 @@
-%h1 Choose a category to draw
-
-.option-button
-  = link_to 'Champions', draw_champions_path, class: 'btn btn-primary button', id: 'draw-champions-button'
-  = link_to 'Pros', '#', class: 'btn btn-primary button', id: 'draw-pros-button'
-
-%h1 Choose a category to guess a drawing
-
-.option-button
-  = link_to 'Champions', '#', class: 'btn btn-primary button', id: 'guess-champions-button'
-  = link_to 'Pros', '#', class: 'btn btn-primary button', id: 'guess-pros-button'
-
-%h1 Browse pictures that have been drawn
-
-.option-button
-  = link_to 'Gallery', '#', class: 'btn btn-primary button', id: 'view-gallery-button'
+.group-option
+  %h1 Choose a category to draw
+  .option-button
+    = link_to 'Champions', draw_champions_path, class: 'btn btn-primary button btn-lg', id: 'draw-champions-button'
+    = link_to 'Pros', '#', class: 'btn btn-primary button btn-lg', id: 'draw-pros-button'
+%br
+.group-option
+  %h1 Choose a category to guess a drawing
+  .option-button
+    = link_to 'Champions', '#', class: 'btn btn-primary button btn-lg', id: 'guess-champions-button'
+    = link_to 'Pros', '#', class: 'btn btn-primary button btn-lg', id: 'guess-pros-button'
+%br
+.group-option
+  %h1 Browse pictures that have been drawn
+  .option-button
+    = link_to 'Gallery', '#', class: 'btn btn-primary button btn-lg', id: 'view-gallery-button'
