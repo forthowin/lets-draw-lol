@@ -1,11 +1,11 @@
 .image-area
   .image-name
-    %img{src: @champion.image, alt: "Splash art of #{@champion.name}", class: 'image-container', width: '500px'}
-    %h3#champion-name= @champion.name
+    %img{src: '/cover.jpg', id: 'champion-picture', alt: "Cover picture", class: 'image-container', width: '500px'}
+    %h3#champion-name
 
   #timer-button
-    = form_tag('#', remote: true) do
-      = submit_tag 'Start!', class: 'btn btn-success btn-lg'
+    = form_tag('/draw/champions', remote: true) do
+      = submit_tag 'Start!', class: 'btn btn-success btn-lg', id: 'start-button'
 
   #draw-area
     %canvas#canvas-area{width: '500px', height: '295px'}
@@ -20,4 +20,5 @@
       %div(style="background-color:yellow")
       %div(style="background-color:gray")
       %div(style="background-color:brown")
+      %div(style="background-color:white")
 
