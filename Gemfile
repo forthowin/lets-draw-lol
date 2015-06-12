@@ -8,6 +8,7 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'figaro'
 gem 'haml'
+gem 'nokogiri'
 
 gem 'sdoc', '~> 0.4.0',          group: :doc
 

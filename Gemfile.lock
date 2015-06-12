@@ -216,6 +216,7 @@ DEPENDENCIES
   jquery-rails
   launchy
   letter_opener
+  nokogiri
   pg
   pry
   rails (= 4.2.0)
