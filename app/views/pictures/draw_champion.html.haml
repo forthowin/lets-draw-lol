@@ -7,4 +7,17 @@
     = form_tag('#', remote: true) do
       = submit_tag 'Start!', class: 'btn btn-success btn-lg'
 
-  %canvas#draw-area{width: '500px', height: '295px'}
+  #draw-area
+    %canvas#canvas-area{width: '500px', height: '295px'}
+    #clr
+      %div(style="background-color:black")
+      %div(style="background-color:red")
+      %div(style="background-color:green")
+      %div(style="background-color:orange")
+      %div(style="background-color:blue")
+      %div(style="background-color:purple")
+      %div(style="background-color:pink")
+      %div(style="background-color:yellow")
+      %div(style="background-color:gray")
+      %div(style="background-color:brown")
+
