@@ -1,0 +1,71 @@
+$(document).ready(function(){
+  var a=false;var b,c="";var d=document.getElementById("canvas-area");
+  var time_flag = true;
+  var e=d.getContext("2d");e.strokeStyle="black";
+  e.lineWidth=3;e.lineCap="round";
+  e.fillStyle="#fff";e.fillRect(0,0,d.width,d.height);
+  $("#clr > div").click(function(){e.strokeStyle=$(this).css("background-color")});
+  $("#canvas-area").mousedown(function(d){a=true;e.save();b=d.pageX-this.offsetLeft;c=d.pageY-this.offsetTop});
+
+  $(document).mouseup(function(){a=false});
+  $(document).click(function(){a=false});
+
+  $("#canvas-area").mousemove(function(d){
+    if(a==true && time_flag==true){
+      e.beginPath();
+      e.moveTo(d.pageX-this.offsetLeft,d.pageY-this.offsetTop);
+      e.lineTo(b,c);
+      e.stroke();
+      e.closePath();
+      b=d.pageX-this.offsetLeft;
+      c=d.pageY-this.offsetTop
+    }
+  });
+
+  $("#champion-picture").attr("src", "<%= @champion.image %>");
+  $("#champion-name").html("<%= @champion.name %>");
+  $("#champion-id").html("<%= @champion.id %>");
+
+  var time = $("#start-button")
+  time.attr("disabled", true);
+
+  time.val(60);
+  var dataURL;
+  var countDown = function() {
+    time.val(parseFloat(time.val()) - 1);
+    if(parseFloat(time.val()) <= 0) {
+      window.clearInterval(timer);
+      time.removeAttr("disabled");
+      time_flag = false;
+      time.val("Draw Again!");
+      
+      dataURL = d.toDataURL('image/png');
+      var file = dataURLtoBlob(dataURL);
+      var fd = new FormData();
+      fd.append("image", file);
+      fd.append("picture_id", $("#champion-id").text());
+      $.ajax({
+        url: "/drawings",
+        type: "POST",
+        data: fd,
+        processData: false,
+        contentType: false
+      });
+    }
+  }
+
+  var timer = window.setInterval(countDown, 1000);
+
+  function dataURLtoBlob(dataURL) {
+    var binary = atob(dataURL.split(',')[1]);
+    var array = [];
+    for(var i = 0; i < binary.length; i++) {
+      array.push(binary.charCodeAt(i));
+    }
+    return new Blob([new Uint8Array(array)], {type: 'image/png'});
+  }
+
+
+});
+
+
