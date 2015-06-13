@@ -1,0 +1,2 @@
+Fabricator(:drawing) do
+end

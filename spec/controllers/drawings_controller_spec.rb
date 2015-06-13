@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe PicturesController do
+describe DrawingsController do
   describe 'POST start_draw' do
     it 'randomly assigns @champion' do
       category = Fabricate(:category, name: 'Champions')
