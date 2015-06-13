@@ -10,6 +10,8 @@ gem 'figaro'
 gem 'haml'
 gem 'nokogiri'
 gem 'bootstrap-sass', '~> 3.3.4'
+gem 'carrierwave'
+gem 'carrierwave-aws'
 
 gem 'sdoc', '~> 0.4.0',          group: :doc
 
