@@ -1,15 +1,19 @@
 .image-area
   .image-name
-    %img{src: "/cover.jpg", id: 'champion-picture', alt: "Cover picture", class: 'image-container', width: '500px'}
-    %h3#champion-name
-    %p(style="display:none" id="champion-id")
+    - if picture_type == 'pros'
+      %img{src: cover, id: 'picture-display', alt: "Cover picture", class: 'image-container', width: '500px', height: '420px'}
+    - else
+      %img{src: cover, id: 'picture-display', alt: "Cover picture", class: 'image-container', width: '500px'}
+    %h3#picture-name
+    %p(style="display:none" id="picture-id")
 
   #timer-button
-    = form_tag('/draw/champions', remote: true) do
+    = form_tag("/start-draw", remote: true) do
+      = hidden_field_tag :picture_type, picture_type
       = submit_tag 'Start!', class: 'btn btn-success btn-lg', id: 'start-button'
 
   #draw-area
-    %canvas#canvas-area{width: '500px', height: '295px'}
+    %canvas#canvas-area{width: '500px', height: '420px'}
     #clr
       %div(style="background-color:black")
       %div(style="background-color:red")
