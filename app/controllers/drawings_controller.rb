@@ -3,8 +3,11 @@ class DrawingsController < ApplicationController
   def draw_champion
   end
 
+  def draw_pros
+  end
+
   def start_draw
-    @champion = Category.where(name: 'Champions').first.pictures.sample
+    @picture = Category.where(name: params[:picture_type].capitalize).first.pictures.sample
     respond_to do |format|
       format.js
     end
