@@ -3,5 +3,7 @@ Rails.application.routes.draw do
   get '/draw/champions', to: 'drawings#draw_champion'
   post '/start-draw', to: 'drawings#start_draw'
   get '/draw/pros', to: 'drawings#draw_pros'
+  get '/guess/champions', to: 'drawings#guess_champion'
+  get 'guess/pros', to: 'drawings#guess_pros'
   resources :drawings, only: [:create, :index]
 end
