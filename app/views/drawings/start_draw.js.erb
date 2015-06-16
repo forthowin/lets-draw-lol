@@ -1,19 +1,17 @@
 $(document).ready(function(){
   var a=false;var b,c="";var d=document.getElementById("canvas-area");
   var time_flag = true;
-  var drawn_flag = true;
   var e=d.getContext("2d");e.strokeStyle="black";
   e.lineWidth=3;e.lineCap="round";
   e.fillStyle="#fff";e.fillRect(0,0,d.width,d.height);
   $("#clr > div").click(function(){e.strokeStyle=$(this).css("background-color")});
-  $("#canvas-area").mousedown(function(d){a=true;b=d.pageX-this.offsetLeft;c=d.pageY-this.offsetTop});
+  $("#canvas-area").mousedown(function(d){a=true;e.save();b=d.pageX-this.offsetLeft;c=d.pageY-this.offsetTop});
 
   $(document).mouseup(function(){a=false});
   $(document).click(function(){a=false});
 
   $("#canvas-area").mousemove(function(d){
     if(a==true && time_flag==true){
-      //drawn_flag = true;
       e.beginPath();
       e.moveTo(d.pageX-this.offsetLeft,d.pageY-this.offsetTop);
       e.lineTo(b,c);
@@ -46,21 +44,18 @@ $(document).ready(function(){
       time_flag = false;
       time.val("Draw Again!");
       
-      if(drawn_flag) {
-        dataURL = d.toDataURL('image/png');
-        var file = dataURLtoBlob(dataURL);
-        var fd = new FormData();
-        fd.append("image", file);
-        fd.append("picture_id", $("#picture-id").text());
-        fd.append("category_id", "<%= @picture.category.id %>");
-        $.ajax({
-          url: "/drawings",
-          type: "POST",
-          data: fd,
-          processData: false,
-          contentType: false
-        });
-      }
+      dataURL = d.toDataURL('image/png');
+      var file = dataURLtoBlob(dataURL);
+      var fd = new FormData();
+      fd.append("image", file);
+      fd.append("picture_id", $("#picture-id").text());
+      $.ajax({
+        url: "/drawings",
+        type: "POST",
+        data: fd,
+        processData: false,
+        contentType: false
+      });
     }
   }
 
