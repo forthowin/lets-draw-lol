@@ -7,7 +7,6 @@ class DrawingsController < ApplicationController
   end
 
   def guess_champion
-    @drawing = Category.where(name: "champions".capitalize).first.drawings.sample
   end
 
   def guess_pros
