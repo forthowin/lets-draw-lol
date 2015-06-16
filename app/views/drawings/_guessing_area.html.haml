@@ -10,7 +10,8 @@
       = submit_tag 'Start!', class: 'btn btn-success btn-lg', id: 'start-button'
 
   #guess-form
-    = form_tag("/handle-guess", remote: true) do
-      = hidden_field_tag :picture_type, picture_type
-      = text_field_tag(:guess)
-      = submit_tag 'Submit', class: 'btn btn-primary', id: 'guess-button'
+    = form_tag("", remote: true) do
+      = text_field_tag :guess, "", disabled: true
+      = submit_tag 'Submit', class: 'btn btn-primary', id: 'guess-button', disabled: true
+
+  #symbol
