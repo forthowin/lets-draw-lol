@@ -52,6 +52,7 @@ $(document).ready(function(){
         var fd = new FormData();
         fd.append("image", file);
         fd.append("picture_id", $("#picture-id").text());
+        fd.append("category_id", "<%= @picture.category.id %>");
         $.ajax({
           url: "/drawings",
           type: "POST",
