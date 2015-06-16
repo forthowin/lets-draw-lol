@@ -7,5 +7,5 @@ Rails.application.routes.draw do
   get '/guess/pros', to: 'drawings#guess_pros'
   post '/start-guess', to: 'drawings#start_guess'
   post '/handle-guess', to: 'drawings#handle_guess'
-  resources :drawings, only: [:create, :index]
+  resources :drawings, only: [:create, :index, :show]
 end
