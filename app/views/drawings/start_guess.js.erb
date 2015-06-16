@@ -1,0 +1,11 @@
+if("<%= @picture.category.name %>" == "Pros") {
+  $("#picture-display").attr("src", "/pros/<%= @picture.image %>");
+} else {
+  $("#picture-display").attr("src", "<%= @picture.image %>");
+}
+
+$("#picture-name").html("<%= @picture.name %>");
+$("#picture-id").html("<%= @picture.id %>");
+
+var start_button = $("#start-button");
+start_button.attr("disabled", true);
