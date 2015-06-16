@@ -28,7 +28,7 @@ class DrawingsController < ApplicationController
 
   def create
     params[:image].original_filename = SecureRandom.uuid + '.png'
-    Drawing.create!(image: params[:image], picture_id: params[:picture_id])
+    Drawing.create!(image: params[:image], picture_id: params[:picture_id], category_id: params[:category_id])
     render nothing: true
   end
 
