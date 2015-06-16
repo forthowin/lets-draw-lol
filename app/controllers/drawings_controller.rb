@@ -20,7 +20,7 @@ class DrawingsController < ApplicationController
   end
 
   def start_guess
-    @picture = Category.where(name: params[:picture_type].capitalize).first.drawings.sample
+    @drawing = Category.where(name: params[:picture_type].capitalize).first.drawings.sample
     respond_to do |format|
       format.js
     end
@@ -30,9 +30,6 @@ class DrawingsController < ApplicationController
     params[:image].original_filename = SecureRandom.uuid + '.png'
     Drawing.create!(image: params[:image], picture_id: params[:picture_id], category_id: params[:category_id])
     render nothing: true
-  end
-
-  def handle_guess
   end
 
   def index
