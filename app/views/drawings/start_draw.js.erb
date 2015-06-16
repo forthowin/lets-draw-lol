@@ -5,7 +5,7 @@ $(document).ready(function(){
   e.lineWidth=3;e.lineCap="round";
   e.fillStyle="#fff";e.fillRect(0,0,d.width,d.height);
   $("#clr > div").click(function(){e.strokeStyle=$(this).css("background-color")});
-  $("#canvas-area").mousedown(function(d){a=true;e.save();b=d.pageX-this.offsetLeft;c=d.pageY-this.offsetTop});
+  $("#canvas-area").mousedown(function(d){a=true;b=d.pageX-this.offsetLeft;c=d.pageY-this.offsetTop});
 
   $(document).mouseup(function(){a=false});
   $(document).click(function(){a=false});
