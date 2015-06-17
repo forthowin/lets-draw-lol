@@ -28,8 +28,10 @@ class DrawingsController < ApplicationController
 
   def create
     params[:image].original_filename = SecureRandom.uuid + '.png'
-    Drawing.create!(image: params[:image], picture_id: params[:picture_id], category_id: params[:category_id])
-    render nothing: true
+    @drawing = Drawing.create!(image: params[:image], picture_id: params[:picture_id], category_id: params[:category_id])
+    respond_to do |format|
+      format.js { render :show_buttons }
+    end
   end
 
   def index
