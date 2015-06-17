@@ -3,6 +3,7 @@ CarrierWave.configure do |config|
     config.storage    = :aws
     config.aws_bucket = ENV.fetch('S3_BUCKET_NAME')
     config.aws_acl = :'public-read'
+    config.fog_public = true
 
     config.aws_credentials = {
       access_key_id:     ENV.fetch('AWS_ACCESS_KEY_ID'),
