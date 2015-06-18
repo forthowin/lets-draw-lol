@@ -34,6 +34,11 @@ class DrawingsController < ApplicationController
     end
   end
 
+  def guess_share_buttons
+    @drawing = Drawing.find params[:drawing_id]
+    @result = "true" == params[:result]
+  end
+
   def index
     @drawings = Drawing.all
   end
