@@ -6,7 +6,7 @@ new Share(".share-button", {
       image: "<%= @drawing.image_url %>"
     },
     twitter: {
-      url: "stormy-ravine-1966.herokuapp.com/drawings/<%= @drawing.id %>",
+      url: "https%3A%2F%2Fstormy-ravine-1966.herokuapp.com%2Fdrawings%2F<%= @drawing.id %>",
       description: "I drew this <%= @drawing.picture.category.name[0..-2] %> in 60 seconds on stormy-ravine-1966.herokuapp.com. Can you guess who it is?"
     },
     email: {
