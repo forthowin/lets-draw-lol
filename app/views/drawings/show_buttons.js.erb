@@ -5,6 +5,10 @@ new Share(".share-button", {
       url: 'http://stormy-ravine-1966.herokuapp.com/',
       image: "<%= @drawing.image_url %>"
     },
+    twitter: {
+      url: "<%= drawing_path(@drawing) %>",
+      description: "I drew this <%= @drawing.picture.category.name[0..-2] %> in 60 seconds on stormy-ravine-1966.herokuapp.com. Can you guess who it is?"
+    },
     email: {
       enabled: false
     }
