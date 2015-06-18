@@ -30,7 +30,7 @@ class DrawingsController < ApplicationController
     params[:image].original_filename = SecureRandom.uuid + '.png'
     @drawing = Drawing.create!(image: params[:image], picture_id: params[:picture_id], category_id: params[:category_id])
     respond_to do |format|
-      format.js { render :show_buttons }
+      format.js { render :draw_share_buttons }
     end
   end
 
