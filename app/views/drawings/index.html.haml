@@ -1,4 +1,7 @@
-- @drawings.each do |drawing|
-  = link_to drawing_path(drawing) do
-    %img{src: drawing.image_url, class: 'gallery-image'}
+<h1>Gallery</h1>
+
+.gallery
+  - @drawings.each do |drawing|
+    = link_to drawing_path(drawing) do
+      %img{src: drawing.image_url, class: 'gallery-image'}
   
