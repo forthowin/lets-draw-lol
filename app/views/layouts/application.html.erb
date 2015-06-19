@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>LetsDrawLoL | Draw or guess a League of Legends Champion or Pro Player</title>
-  <meta name="application-name" content="LetsDrawLoL" >
-  <meta name="description" content="Draw a random League of Legends champion or pro player in 60 seconds or guess a drawing" >
-  <meta name="author" content="ForThoWin" >
-  <meta name="keywords" content="League of Legends, lol, draw, riot gaming, riot, league, guess, gallery, share, picture" >
-  <%= stylesheet_link_tag    'application', media: 'all' %>
-  <%= javascript_include_tag 'application' %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+  <head>
+    <title>Let's Draw LoL | Draw or guess a League of Legends Champion or Pro Player</title>
+    <meta name="application-name" content="LetsDrawLoL" >
+    <meta name="description" content="Draw a random League of Legends champion or pro player in 60 seconds or guess a drawing" >
+    <meta name="author" content="ForThoWin" >
+    <meta name="keywords" content="League of Legends, lol, draw, riot gaming, riot, league, guess, gallery, share, picture" >
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <%= render '/layouts/navigation' %>
+    <%= yield %>
 
-<%= yield %>
-
-</body>
+  </body>
 </html>
