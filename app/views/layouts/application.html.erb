@@ -11,8 +11,11 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
-    <%= render '/layouts/navigation' %>
-    <%= yield %>
-    <%= render '/layouts/footer' unless params[:action] == 'index'  && params[:controller] == 'drawings' %>
+    <div class="wrapper">
+      <%= render '/layouts/navigation' %>
+      <%= yield %>
+      <div class="push"></div>
+    </div>
+    <%= render '/layouts/footer' %>
   </body>
 </html>
