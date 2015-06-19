@@ -36,14 +36,15 @@ html, body {
   min-height: 100%;
   height: auto !important; 
   height: 100%;
-  margin: 0 auto -100px;
+  margin: 0 auto -90px;
 }
 
 footer, .push {
-  height: 100px;
+  height: 90px;
 }
 
 footer {
   background-color: white;
   border-radius: 5px;
+  padding: 10px 15px 10px 15px;
 }
