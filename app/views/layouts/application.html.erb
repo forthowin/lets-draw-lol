@@ -13,6 +13,6 @@
   <body>
     <%= render '/layouts/navigation' %>
     <%= yield %>
-    <%= render '/layouts/footer' unless params[:action] == 'index' %>
+    <%= render '/layouts/footer' unless params[:action] == 'index'  && params[:controller] == 'drawings' %>
   </body>
 </html>
