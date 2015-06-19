@@ -1,1 +1,9 @@
-%img{src: @drawing.image}
+<h1>Drawing</h3>
+.image-area
+  %img{src: @drawing.image, id: 'show-drawing'}
+  <h3 id="show-drawing-name">?</h3>
+
+:javascript
+  $('#show-drawing-name').click(function(){
+    $(this).html("#{@drawing.picture.name}");
+  });
