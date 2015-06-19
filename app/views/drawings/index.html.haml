@@ -1,7 +1,8 @@
 <h1>Gallery</h1>
 
 .gallery
-  - @drawings.each do |drawing|
-    = link_to drawing_path(drawing) do
-      %img{src: drawing.image.thumb.url, class: 'gallery-image'}
-  
+  .gallery-page
+    = render 'drawings', object: @drawings
+
+  .pagination
+    = link_to_next_page(@drawings, 'Next Page', remote: true)

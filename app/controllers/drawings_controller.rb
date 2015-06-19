@@ -40,7 +40,7 @@ class DrawingsController < ApplicationController
   end
 
   def index
-    @drawings = Drawing.all
+    @drawings = Drawing.order('created_at DESC').page(params[:page])
   end
 
   def show

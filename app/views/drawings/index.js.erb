@@ -1,0 +1,11 @@
+// Append new data
+$("<%=j render(partial: 'drawings', object: @drawings) %>")
+  .appendTo($(".gallery-page"));
+
+// Update pagination link
+<% if @drawings.last_page? %>
+  $('.pagination').html("That's all, folks!");
+<% else %>
+  $('.pagination')
+    .html("<%=j link_to_next_page(@drawings, 'Next Page', :remote => true) %>");
+<% end %>
