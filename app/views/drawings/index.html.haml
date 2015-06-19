@@ -3,5 +3,5 @@
 .gallery
   - @drawings.each do |drawing|
     = link_to drawing_path(drawing) do
-      %img{src: drawing.image_url, class: 'gallery-image'}
+      %img{src: drawing.image.thumb.url, class: 'gallery-image'}
   
