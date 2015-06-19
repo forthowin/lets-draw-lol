@@ -1,19 +1,22 @@
 .image-area
-  .image-name
-    %img{src: cover, id: 'picture-display', alt: "Cover picture", class: 'image-container', width: '500px'}
+  .left-col
+    - if picture_type == 'pros'
+      %img{src: cover, id: 'picture-display', alt: "Cover picture", class: 'image-container', width: '500px', height: '420px'}
+    - else
+      %img{src: cover, id: 'picture-display', alt: "Cover picture", class: 'image-container', width: '500px'}
     %h3#picture-name
     %p(style="display:none" id="picture-id")
 
-  #timer-button
-    = form_tag("/start-guess", remote: true) do
+  .center-col
+    = form_tag("/start-guess", remote: true, id: "timer-button") do
       = hidden_field_tag :picture_type, picture_type
       = submit_tag 'Start!', class: 'btn btn-success btn-lg', id: 'start-button'
 
-  #guess-form
+    .share-button
+
+    #symbol
+
+  #guess-form.right-col
     = form_tag("", remote: true) do
       = text_field_tag :guess, "", disabled: true
       = submit_tag 'Submit', class: 'btn btn-primary', id: 'guess-button', disabled: true
-
-  #symbol
-
-  .share-button

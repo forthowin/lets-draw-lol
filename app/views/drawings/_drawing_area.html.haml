@@ -1,5 +1,5 @@
 .image-area
-  .image-name
+  .left-col
     - if picture_type == 'pros'
       %img{src: cover, id: 'picture-display', alt: "Cover picture", class: 'image-container', width: '500px', height: '420px'}
     - else
@@ -7,12 +7,14 @@
     %h3#picture-name
     %p(style="display:none" id="picture-id")
 
-  #timer-button
-    = form_tag("/start-draw", remote: true) do
+  .center-col
+    = form_tag("/start-draw", remote: true, id: "timer-button") do
       = hidden_field_tag :picture_type, picture_type
       = submit_tag 'Start!', class: 'btn btn-success btn-lg', id: 'start-button'
 
-  #draw-area
+    .share-button
+
+  .right-col
     %canvas#canvas-area{width: '500px', height: '420px'}
     #clr
       %div(style="background-color:black")
@@ -26,5 +28,3 @@
       %div(style="background-color:gray")
       %div(style="background-color:brown")
       %div(style="background-color:white")
-  .share-button
-
