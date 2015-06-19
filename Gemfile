@@ -12,6 +12,7 @@ gem 'nokogiri'
 gem 'bootstrap-sass', '~> 3.3.4'
 gem 'carrierwave'
 gem 'carrierwave-aws'
+gem 'mini_magick'
 
 gem 'sdoc', '~> 0.4.0',          group: :doc
 
