@@ -8,4 +8,12 @@ $("<%=j render(partial: 'drawings', object: @drawings) %>")
 <% else %>
   $('.pagination')
     .html("<%=j link_to_next_page(@drawings, 'Next Page', :remote => true) %>");
+  <% if @search.present? %>
+    var hrefEl = $('.pagination a').attr('href');
+    $('.pagination a').attr('href', hrefEl + "&search=" + "<%= @search %>");
+  <% end %>
+  <% if @order.present? %>
+    var hrefEl = $('.pagination a').attr('href');
+    $('.pagination a').attr('href', hrefEl + "&order=" + "<%= @order %>");
+  <% end %>
 <% end %>

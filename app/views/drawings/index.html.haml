@@ -1,8 +1,16 @@
 <h1>Gallery</h1>
 
+= form_tag("/drawings", method: 'get') do
+  = select_tag :search, options_for_select(name_list, params[:search]), prompt: "Search for..."
+  = select_tag :order, options_for_select(order_list, params[:order]), prompt: "Order by..."
+  = submit_tag "Search"
+
 .gallery
   .gallery-page
     = render 'drawings', object: @drawings
 
   .pagination
     = link_to_next_page(@drawings, 'Next Page', remote: true)
+
+= render partial: 'pagination_search.js', object: @search unless @search.nil?
+= render partial: 'pagination_order.js', object: @order unless @order.nil?

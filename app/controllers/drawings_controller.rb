@@ -40,7 +40,23 @@ class DrawingsController < ApplicationController
   end
 
   def index
-    @drawings = Drawing.order('created_at DESC').page(params[:page])
+    if params[:search].blank? && params[:order].blank?
+      @drawings = Drawing.order('created_at DESC').page(params[:page])
+    else
+      if params[:search].blank?
+        @search = "%"
+      else
+        @search = params[:search].gsub(/[^a-zA-Z]/, "")
+      end
+      if params[:order] == "Newest" || params[:order].blank?
+        @order = "DESC"
+      else
+        @order = "ASC"
+      end
+      @drawings = Drawing.joins(:picture).where("name LIKE ?", @search).order("created_at #{@order}").page(params[:page])
+    end
+    @search = nil if @search == "%"
+    @order = params[:order]
   end
 
   def show

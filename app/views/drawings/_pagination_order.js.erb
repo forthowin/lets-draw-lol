@@ -1,0 +1,6 @@
+<script>
+$(document).ready(function(){
+  var hrefEl = $('.pagination a').attr('href');
+  $('.pagination a').attr('href', hrefEl + '&order=' + "<%= @order %>");
+});
+</script>
