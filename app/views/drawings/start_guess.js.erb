@@ -32,7 +32,7 @@ $('#guess-button').click(function() {
 });
 
 function check_guess() {
-  if("<%= @drawing.picture.name.downcase %>" == $('#guess').val().toLowerCase()) {
+  if("<%= @drawing.picture.name.downcase %>" == $('#guess').val().toLowerCase().replace(/[^a-zA-Z]/, "")) {
     $('#symbol').attr('class', 'glyphicon glyphicon-ok').css('color', 'green');
     return true;
   } else {
