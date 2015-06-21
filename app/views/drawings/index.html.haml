@@ -1,9 +1,10 @@
 <h1>Gallery</h1>
 
-= form_tag("/drawings", method: 'get') do
-  = select_tag :search, options_for_select(name_list, params[:search]), prompt: "Search for..."
-  = select_tag :order, options_for_select(order_list, params[:order]), prompt: "Order by..."
-  = submit_tag "Search"
+%div
+  = form_tag("/drawings", method: 'get', id: 'search-form') do
+    = select_tag :search, options_for_select(name_list, params[:search]), prompt: "Search for..."
+    = select_tag :order, options_for_select(order_list, params[:order]), prompt: "Order by..."
+    = submit_tag "Search", id: 'search-button', class: 'btn btn-primary btn-lg'
 
 .gallery
   .gallery-page
