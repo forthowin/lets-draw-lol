@@ -13,14 +13,14 @@ class DrawingsController < ApplicationController
   end
 
   def start_draw
-    @picture = Category.where(name: params[:picture_type].capitalize).first.pictures.sample
+    @picture = Category.find_by(name: params[:picture_type].capitalize).pictures.sample
     respond_to do |format|
       format.js
     end
   end
 
   def start_guess
-    @drawing = Category.where(name: params[:picture_type].capitalize).first.drawings.sample
+    @drawing = Category.find_by(name: params[:picture_type].capitalize).drawings.sample
     respond_to do |format|
       format.js
     end
