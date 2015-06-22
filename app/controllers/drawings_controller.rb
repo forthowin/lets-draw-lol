@@ -28,7 +28,7 @@ class DrawingsController < ApplicationController
 
   def create
     params[:image].original_filename = SecureRandom.uuid + '.png'
-    @drawing = Drawing.create!(image: params[:image], picture_id: params[:picture_id], category_id: params[:category_id])
+    @drawing = Drawing.create(image: params[:image], picture_id: params[:picture_id], category_id: params[:category_id])
     respond_to do |format|
       format.js { render :draw_share_buttons }
     end
@@ -43,16 +43,8 @@ class DrawingsController < ApplicationController
     if params[:search].blank? && params[:order].blank?
       @drawings = Drawing.order('created_at DESC').page(params[:page])
     else
-      if params[:search].blank?
-        @search = "%"
-      else
-        @search = params[:search].gsub(/[^a-zA-Z]/, "")
-      end
-      if params[:order] == "Newest" || params[:order].blank?
-        @order = "DESC"
-      else
-        @order = "ASC"
-      end
+      @search = params[:search].blank? ? "%" : params[:search].gsub(/[^a-zA-Z]/, "")
+      @order = params[:order] == "Newest" || params[:order].blank? ? "DESC" : "ASC"
       @drawings = Drawing.joins(:picture).where("name LIKE ?", @search).order("created_at #{@order}").page(params[:page])
     end
     @search = nil if @search == "%"
