@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   root 'pages#front'
   get '/draw/champions', to: 'drawings#draw_champion'
   post '/start-draw', to: 'drawings#start_draw'
