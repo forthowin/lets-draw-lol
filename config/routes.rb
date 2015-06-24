@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, controllers: {
+    sessions: 'users/sessions',
+    registrations: 'users/registrations'
+  }
   root 'pages#front'
   get '/draw/champions', to: 'drawings#draw_champion'
   post '/start-draw', to: 'drawings#start_draw'
