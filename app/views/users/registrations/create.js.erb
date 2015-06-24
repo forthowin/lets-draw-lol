@@ -1,0 +1,8 @@
+<% if resource.errors.any? %>
+  $('#username-error').html("<%= resource.errors[:username].first %>");
+  $('#email-error').html("<%= resource.errors[:email].first %>");
+  $('#password-error').html("<%= resource.errors[:password].first %>");
+  $('#password-confirmation-error').html("<%= resource.errors[:password_confirmation].first %>");
+<% else %>
+  window.location.reload();
+<% end %>

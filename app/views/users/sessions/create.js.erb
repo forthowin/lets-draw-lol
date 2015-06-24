@@ -1,0 +1,5 @@
+<% if resource %>
+  window.location.reload();
+<% else %>
+  $('#login-error').html('Wrong login or password');
+<% end %>
