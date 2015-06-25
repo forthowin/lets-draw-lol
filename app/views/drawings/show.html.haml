@@ -3,8 +3,10 @@
   %img{src: @drawing.image, id: 'show-drawing'}
   .caption
     .likes-group
-      %span.glyphicon.glyphicon-thumbs-up(aria-hidden="true")
-      = "likes"
+      = link_to likes_path(drawing_id: @drawing.id), method: 'post', remote: true do
+        %span.glyphicon.glyphicon-thumbs-up(aria-hidden="true" style="#{like_button_color}")
+      %span#likes-count= " #{@drawing.likes.count} "
+      Likes
     %h5
       by 
       - if @drawing.user
