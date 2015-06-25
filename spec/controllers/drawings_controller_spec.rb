@@ -103,7 +103,7 @@ describe DrawingsController do
     let(:image) { File.new(Rails.root + 'spec/fixtures/test_drawing.png') }
     let(:file) { file = ActionDispatch::Http::UploadedFile.new(tempfile: image, filename: 'blob', content_type: "image/jpeg") }
 
-    context 'with a user that is not signed in' do
+    context 'with a user that is signed in or not signed in' do
       before { post :create, image: file, picture_id: picture.id, category_id: category.id, format: 'js' }
 
       it 'creates a Drawing' do
@@ -125,6 +125,13 @@ describe DrawingsController do
 
       it 'renders draw_share_buttons.js.erb' do
         expect(response).to render_template 'draw_share_buttons'
+      end
+    end
+
+    context 'with a non signed in user' do
+      it 'creates a Drawing that does not belong any user' do
+        post :create, image: file, picture_id: picture.id, category_id: category.id, format: 'js'
+        expect(Drawing.first.user).to be_nil
       end
     end
 
