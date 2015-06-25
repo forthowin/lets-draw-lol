@@ -47,4 +47,12 @@ module ApplicationHelper
   def order_list
     ["Newest", "Oldest"]
   end
+
+  def like_button_color
+    if Like.where("drawing_id = ? AND user_id = ?", @drawing.id, current_user.id).empty?
+        "color:white"
+    else
+        "color:blue"
+    end
+  end
 end
