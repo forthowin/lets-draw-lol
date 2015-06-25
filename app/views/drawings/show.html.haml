@@ -1,15 +1,19 @@
 %h1 Drawing
 .image-area
   %img{src: @drawing.image, id: 'show-drawing'}
-  %h5
-    by 
-    - if @drawing.user
-      = link_to show_user_path(@drawing.user), class: 'username-link' do
-        = "#{@drawing.user.username} "
-      = time_ago_in_words(@drawing.created_at) + " ago"
-    - else
-      anonymous 
-      = time_ago_in_words(@drawing.created_at) + " ago"
+  .caption
+    .likes-group
+      %span.glyphicon.glyphicon-thumbs-up(aria-hidden="true")
+      = "likes"
+    %h5
+      by 
+      - if @drawing.user
+        = link_to show_user_path(@drawing.user), class: 'username-link' do
+          = "#{@drawing.user.username} "
+        = time_ago_in_words(@drawing.created_at) + " ago"
+      - else
+        anonymous 
+        = time_ago_in_words(@drawing.created_at) + " ago"
 
   %h3#show-drawing-name ?
 
