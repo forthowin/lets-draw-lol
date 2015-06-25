@@ -28,7 +28,11 @@ class DrawingsController < ApplicationController
 
   def create
     params[:image].original_filename = SecureRandom.uuid + '.png'
-    @drawing = Drawing.create(image: params[:image], picture_id: params[:picture_id], category_id: params[:category_id])
+    if user_signed_in?
+      @drawing = Drawing.create(image: params[:image], picture_id: params[:picture_id], category_id: params[:category_id], user: current_user)
+    else
+      @drawing = Drawing.create(image: params[:image], picture_id: params[:picture_id], category_id: params[:category_id])
+    end
     respond_to do |format|
       format.js { render :draw_share_buttons }
     end

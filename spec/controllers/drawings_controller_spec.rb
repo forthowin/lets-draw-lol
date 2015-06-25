@@ -103,27 +103,38 @@ describe DrawingsController do
     let(:image) { File.new(Rails.root + 'spec/fixtures/test_drawing.png') }
     let(:file) { file = ActionDispatch::Http::UploadedFile.new(tempfile: image, filename: 'blob', content_type: "image/jpeg") }
 
-    before { post :create, image: file, picture_id: picture.id, category_id: category.id, format: 'js' }
+    context 'with a user that is not signed in' do
+      before { post :create, image: file, picture_id: picture.id, category_id: category.id, format: 'js' }
 
-    it 'creates a Drawing' do
-      expect(Drawing.count).to eq 1
+      it 'creates a Drawing' do
+        expect(Drawing.count).to eq 1
+      end
+
+      it 'uses SecureRandom.uuid to generate the filename' do
+        expect(Drawing.first.image_identifier).not_to eq('blob')
+        expect(Drawing.first.image_identifier.length).to eq(40)
+      end
+
+      it 'appends .png to the end of the filename' do
+        expect(Drawing.first.image_identifier[-4,4]).to eq('.png')
+      end
+
+      it 'assigns @drawing' do
+        expect(assigns(:drawing)).to be_a Drawing
+      end
+
+      it 'renders draw_share_buttons.js.erb' do
+        expect(response).to render_template 'draw_share_buttons'
+      end
     end
 
-    it 'uses SecureRandom.uuid to generate the filename' do
-      expect(Drawing.first.image_identifier).not_to eq('blob')
-      expect(Drawing.first.image_identifier.length).to eq(40)
-    end
-
-    it 'appends .png to the end of the filename' do
-      expect(Drawing.first.image_identifier[-4,4]).to eq('.png')
-    end
-
-    it 'assigns @drawing' do
-      expect(assigns(:drawing)).to be_a Drawing
-    end
-
-    it 'renders draw_share_buttons.js.erb' do
-      expect(response).to render_template 'draw_share_buttons'
+    context 'with a signed in user' do
+      it 'creates a Drawing belonging to a user if they are logged in' do
+        bob = Fabricate(:user)
+        sign_in bob
+        post :create, image: file, picture_id: picture.id, category_id: category.id, format: 'js'
+        expect(Drawing.first.user).to eq bob
+      end
     end
   end
 end
