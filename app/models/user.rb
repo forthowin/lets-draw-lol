@@ -4,6 +4,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  has_many :drawings, -> { order("created_at DESC") }
+
   attr_accessor :login
 
   validates :username,
