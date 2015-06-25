@@ -1,5 +1,0 @@
-.gallery
-  .gallery-page
-    - user.drawings.each do |drawing|
-      = link_to drawing_path(drawing) do
-        %img{src: drawing.image.thumb.url, class: 'gallery-image'}
