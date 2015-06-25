@@ -13,4 +13,5 @@ Rails.application.routes.draw do
   post '/guess-share-buttons', to: 'drawings#guess_share_buttons'
   get '/users/:id', to: 'users/users#show', as: 'show_user'
   resources :drawings, only: [:create, :index, :show]
+  resources :likes, only: [:create]
 end
