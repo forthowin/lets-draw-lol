@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :drawings, -> { order("created_at DESC") }
+  has_many :likes
 
   attr_accessor :login
 
