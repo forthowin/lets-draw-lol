@@ -11,5 +11,6 @@ Rails.application.routes.draw do
   get '/guess/pros', to: 'drawings#guess_pros'
   post '/start-guess', to: 'drawings#start_guess'
   post '/guess-share-buttons', to: 'drawings#guess_share_buttons'
+  get '/users/:id', to: 'users/users#show'
   resources :drawings, only: [:create, :index, :show]
 end
