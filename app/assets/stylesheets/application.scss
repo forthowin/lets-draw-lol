@@ -42,11 +42,11 @@ html, body {
   min-height: 100%;
   height: auto !important; 
   height: 100%;
-  margin: 0 auto -90px;
+  margin: 0 auto -130px;
 }
 
 footer, .push {
-  height: 90px;
+  height: 130px;
 }
 
 footer {
@@ -56,5 +56,15 @@ footer {
 }
 
 footer p {
+  clear: both;
   color: black;
+}
+
+#paypal-donate {
+  float: left;
+  margin-bottom: 10px;
+}
+
+.donate-desc {
+  float: left;
 }
