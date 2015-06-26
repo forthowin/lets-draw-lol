@@ -19,6 +19,22 @@
 
   %h3#show-drawing-name ?
 
+.comment-section
+  = form_for [@drawing, Comment.new], remote: true do |f|
+    = f.text_area :body
+    = f.submit 'Submit', class: 'btn btn-success'
+
+  %h5.comment-count= "User Comments(#{@drawing.comments.count})"
+  .comments
+    - @drawing.comments.each do |comment|
+      .comment
+        %p= comment.body
+        by
+        = link_to show_user_path(comment.user), class: 'username-link' do
+          = "#{comment.user.username} "
+        = time_ago_in_words(comment.created_at) + " ago"
+
+
 :javascript
   $('#show-drawing-name').click(function(){
     $(this).html("#{@drawing.picture.name}");
