@@ -7,6 +7,10 @@ class ApplicationController < ActionController::Base
 
   protected
 
+  def require_login
+    redirect_to new_user_session_path, format: 'js' unless user_signed_in?
+  end
+
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:username, :email, :password, :password_confirmation, :remember_me) }
     devise_parameter_sanitizer.for(:sign_in) { |u| u.permit(:login, :username, :email, :password, :remember_me) }
