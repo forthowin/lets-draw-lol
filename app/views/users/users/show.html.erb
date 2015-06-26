@@ -10,9 +10,26 @@
 
   <!-- Tab panes -->
   <div class="tab-content">
-    <div role="tabpanel" class="tab-pane active gallery gallery-page" id="user-drawings-tab"><%= render 'drawings/drawings', object: @drawings %></div>    
-    <div role="tabpanel" class="tab-pane" id="user-likes-tab">...</div>
+    <div role="tabpanel" class="tab-pane active user-gallery gallery-page" id="user-drawings-tab"><%= render 'drawings', drawings: @drawings %>
+      <div><%= paginate @drawings, param_name: "drawings_page" %></div>
+    </div>
+    <div role="tabpanel" class="tab-pane user-gallery gallery-page" id="user-likes-tab"><%= render 'drawings', drawings: @like_drawings %>
+      <div><%= paginate @like_drawings, param_name: "like_drawings_page" %></div>
+    </div>
   </div>
 
 </div>
 
+<script>
+$(function() { 
+  $('a[data-toggle="tab"]').on('click', function (e) {
+    localStorage.setItem('lastTab', $(e.target).attr('href'));
+  });
+
+  var lastTab = localStorage.getItem('lastTab');
+
+  if (lastTab) {
+      $('a[href="'+lastTab+'"]').click();
+  }
+});
+</script>
