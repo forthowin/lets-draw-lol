@@ -1,0 +1,6 @@
+$('.comments').prepend("<div class='comment'><p><%= j @comment.body %>");
+$('.comments div:first-child').append("by <a class='username-link' href='<%= show_user_path(@comment.user) %>'><%= @comment.user.username %></a><%= time_ago_in_words(@comment.created_at) %> go");
+
+$('.comment-count').html("User Comments(<%= @drawing.comments.count %>)");
+
+$('#comment_body').val("");
