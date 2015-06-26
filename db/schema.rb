@@ -27,8 +27,10 @@ ActiveRecord::Schema.define(version: 20150625063640) do
   end
 
   create_table "likes", force: :cascade do |t|
-    t.integer "drawing_id", null: false
-    t.integer "user_id",    null: false
+    t.integer  "drawing_id", null: false
+    t.integer  "user_id",    null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "pictures", force: :cascade do |t|
