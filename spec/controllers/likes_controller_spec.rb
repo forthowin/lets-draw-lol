@@ -21,6 +21,17 @@ describe LikesController do
         post :create, drawing_id: drawing.id, format: :js
         expect(Like.count).to eq 0
       end
+
+      it 'renders the like template if the like is created' do
+        post :create, drawing_id: drawing.id, format: :js
+        expect(response).to render_template 'like'
+      end
+
+      it 'renders the unlike template if the like already exists' do
+        Like.create(drawing: drawing, user: bob)
+        post :create, drawing_id: drawing.id, format: :js
+        expect(response).to render_template 'unlike'
+      end
     end
 
     context 'with a user that is not signed in' do
