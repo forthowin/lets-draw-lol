@@ -48,8 +48,13 @@ class DrawingsController < ApplicationController
       @drawings = Drawing.order('created_at DESC').page(params[:page])
     else
       @search = params[:search].blank? ? "%" : params[:search].gsub(/[^a-zA-Z]/, "")
-      @order = params[:order] == "Newest" || params[:order].blank? ? "DESC" : "ASC"
-      @drawings = Drawing.joins(:picture).where("name LIKE ?", @search).order("created_at #{@order}").page(params[:page])
+      if params[:order] == "Newest" || params[:order].blank?
+        @drawings = Drawing.joins(:picture).where("name LIKE ?", @search).order("created_at DESC").page(params[:page])
+      elsif params[:order] == "Oldest"
+        @drawings = Drawing.joins(:picture).where("name LIKE ?", @search).order("created_at ASC").page(params[:page])
+      elsif params[:order] == "Popularity"
+        @drawings = Drawing.joins(:picture).where("name LIKE ?", @search).select('drawings.*, count(likes.drawing_id) AS drawing_count').joins('LEFT JOIN likes on drawings.id = likes.drawing_id').group('drawings.id').order('drawing_count DESC, created_at DESC').page(params[:page])
+      end
     end
     @search = nil if @search == "%"
     @order = params[:order]
