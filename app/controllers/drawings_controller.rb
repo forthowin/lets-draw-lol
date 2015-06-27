@@ -53,7 +53,9 @@ class DrawingsController < ApplicationController
       elsif params[:order] == "Oldest"
         @drawings = Drawing.joins(:picture).where("name LIKE ?", @search).order("created_at ASC").page(params[:page])
       elsif params[:order] == "Popularity"
-        @drawings = Drawing.joins(:picture).where("name LIKE ?", @search).select('drawings.*, count(likes.drawing_id) AS drawing_count').joins('LEFT JOIN likes on drawings.id = likes.drawing_id').group('drawings.id').order('drawing_count DESC, created_at DESC').page(params[:page])
+        @drawings = Drawing.joins(:picture).where("name LIKE ?", @search).select('drawings.*, count(likes.drawing_id) AS like_count').joins('LEFT JOIN likes on drawings.id = likes.drawing_id').group('drawings.id').order('like_count DESC, created_at DESC').page(params[:page])
+      elsif params[:order] == "Comments"
+        @drawings = Drawing.joins(:picture).where("name LIKE ?", @search).select('drawings.*, count(comments.drawing_id) AS comment_count').joins('LEFT JOIN comments on drawings.id = comments.drawing_id').group('drawings.id').order('comment_count DESC, created_at DESC').page(params[:page])
       end
     end
     @search = nil if @search == "%"
