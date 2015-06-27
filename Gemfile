@@ -16,6 +16,7 @@ gem 'mini_magick'
 gem 'kaminari'
 gem 'jquery-infinite-pages'
 gem 'devise'
+gem 'puma'
 
 gem 'sdoc', '~> 0.4.0',          group: :doc
 
