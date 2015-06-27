@@ -22,7 +22,10 @@
 
     %h3
       Benefits of 
-      = link_to 'REGISTERING', new_user_registration_path, remote: true, class: 'front-links'
+      - if user_signed_in?
+        REGISTERING
+      -else
+        = link_to 'REGISTERING', new_user_registration_path, remote: true, class: 'front-links'
       for an account:
       %ul
         %li A Profile to view all your drawn pictures
