@@ -2,22 +2,22 @@ new Share(".share-button", {
   networks: {
     facebook: {
       app_id: "1440154799639883",
-      url: 'http://stormy-ravine-1966.herokuapp.com/',
+      url: 'http://letsdrawlol.com/',
       image: "<%= @drawing.image_url %>",
       caption: "I drew this <%= @drawing.picture.category.name[0..-2] %> in 60 seconds. Can you do better?"
     },
     twitter: {
-      url: "https%3A%2F%2Fstormy-ravine-1966.herokuapp.com%2Fdrawings%2F<%= @drawing.id %>",
-      description: "I drew this <%= @drawing.picture.category.name[0..-2] %> in 60 seconds on stormy-ravine-1966.herokuapp.com. Can you guess who it is?"
+      url: "https%3A%2F%2Fletsdrawlol.com%2Fdrawings%2F<%= @drawing.id %>",
+      description: "I drew this <%= @drawing.picture.category.name[0..-2] %> in 60 seconds on letsdrawlol.com. Can you guess who it is?"
     },
     email: {
       enabled: false
     },
     google_plus: {
-      url: "https%3A%2F%2Fstormy-ravine-1966.herokuapp.com%2Fdrawings%2F<%= @drawing.id %>"
+      url: "https%3A%2F%2Fletsdrawlol.com%2Fdrawings%2F<%= @drawing.id %>"
     },
     pinterest: {
-      url: "https%3A%2F%2Fstormy-ravine-1966.herokuapp.com%2Fdrawings%2F<%= @drawing.id %>",
+      url: "https%3A%2F%2Fletsdrawlol.com%2Fdrawings%2F<%= @drawing.id %>",
       image: "<%= @drawing.image_url %>",
       description: "I drew this <%= @drawing.picture.category.name[0..-2] %> in 60 seconds. Can you guess who it is?"
     }

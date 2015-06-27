@@ -2,22 +2,22 @@ new Share(".share-button", {
   networks: {
     facebook: {
       app_id: "1440154799639883",
-      url: 'http://stormy-ravine-1966.herokuapp.com/',
+      url: 'http://letsdrawlol.com/',
       image: "<%= @drawing.image_url %>",
       caption: "<%= @result ? 'I was able to guess who this correctly, can you?' : 'Can you guess who this is? Cus I was not able to.' %>"
     },
     twitter: {
-      url: "https%3A%2F%2Fstormy-ravine-1966.herokuapp.com%2Fdrawings%2F<%= @drawing.id %>",
+      url: "https%3A%2F%2Fletsdrawlol.com%2Fdrawings%2F<%= @drawing.id %>",
       description: "<%= @result ? 'I was able to guess who this is correctly, can you?' : 'Can you guess who this is? Cus I was not able to.' %>"
     },
     email: {
       enabled: false
     },
     google_plus: {
-      url: "https%3A%2F%2Fstormy-ravine-1966.herokuapp.com%2Fdrawings%2F<%= @drawing.id %>"
+      url: "https%3A%2F%2Fletsdrawlol.com%2Fdrawings%2F<%= @drawing.id %>"
     },
     pinterest: {
-      url: "https%3A%2F%2Fstormy-ravine-1966.herokuapp.com%2Fdrawings%2F<%= @drawing.id %>",
+      url: "https%3A%2F%2Fletsdrawlol.com%2Fdrawings%2F<%= @drawing.id %>",
       image: "<%= @drawing.image_url %>",
       description: "<%= @result ? 'I was able to guess who this is correctly, can you?' : 'Can you guess who this is? Cus I was not able to.' %>"
     }
