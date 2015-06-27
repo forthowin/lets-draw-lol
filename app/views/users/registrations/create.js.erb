@@ -1,8 +1,15 @@
 <% if resource.errors.any? %>
   $('#username-error').html("<%= resource.errors[:username].first %>");
+  $('#username-error').css('color', '#D8000C');
+
   $('#email-error').html("<%= resource.errors[:email].first %>");
+  $('#email-error').css('color', '#D8000C');
+
   $('#password-error').html("<%= resource.errors[:password].first %>");
-  $('#password-confirmation-error').html("<%= resource.errors[:password_confirmation].first %>");
+  $('#password-error').css('color', '#D8000C');
+
+  $('#password-confirmation').html("<%= resource.errors[:password_confirmation].first %>");
+  $('#password-confirmation').css('color', '#D8000C');
 <% else %>
   window.location.reload();
 <% end %>
