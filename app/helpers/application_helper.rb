@@ -45,7 +45,7 @@ module ApplicationHelper
   end
 
   def order_list
-    ["Newest", "Oldest", "Popularity"]
+    ["Newest", "Oldest", "Popularity", "Comments"]
   end
 
   def like_button_color
