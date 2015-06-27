@@ -5,20 +5,18 @@
 
   .front-list
     %h3
-      Draw either a random 
-      = link_to 'CHAMPION', draw_champions_path, class: 'front-links'
-      or a random 
-      = link_to 'PROFESSIONAL PLAYER', draw_pros_path, class: 'front-links'
+      Draw either a random #{ link_to 'CHAMPION', draw_champions_path, class: 'front-links' }
+      or a random #{ link_to 'PROFESSIONAL PLAYER', draw_pros_path, class: 'front-links' }. You only have 60 seconds!
 
     %h3
-      Guess a drawing of a random
-      = link_to 'CHAMPION', guess_champions_path, class: 'front-links'
-      or a random
-      = link_to 'PROFESSIONAL PLAYER', guess_pros_path, class: 'front-links'
+      Guess a drawing of a random #{link_to 'CHAMPION', guess_champions_path, class: 'front-links'}
+      or a random #{ link_to 'PROFESSIONAL PLAYER', guess_pros_path, class: 'front-links' } drawn by others!
 
     %h3
-      Check out the drawings of others at the
-      = link_to 'GALLERY', drawings_path, class: 'front-links'
+      Check out the drawings of others at the #{ link_to 'GALLERY', drawings_path, class: 'front-links'}!
+
+    %h3
+      Share your drawings on social media like Facebook and Twitter!
 
     %h3
       Benefits of 
@@ -28,6 +26,6 @@
         = link_to 'REGISTERING', new_user_registration_path, remote: true, class: 'front-links'
       for an account:
       %ul
-        %li A Profile to view all your drawn pictures
+        %li A Profile to view all of your drawn pictures
         %li Ability to comment on drawings
         %li Ability to "Like" drawings
