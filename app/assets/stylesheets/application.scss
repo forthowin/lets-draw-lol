@@ -42,11 +42,11 @@ html, body {
   min-height: 100%;
   height: auto !important; 
   height: 100%;
-  margin: 0 auto -130px;
+  margin: 0 auto -105px;
 }
 
 footer, .push {
-  height: 130px;
+  height: 105px;
 }
 
 footer {
@@ -57,6 +57,7 @@ footer {
 
 footer p {
   clear: both;
+  text-align: center;
   color: black;
 }
 
