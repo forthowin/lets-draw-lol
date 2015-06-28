@@ -1,28 +1,10 @@
-== README
+I created Lets Draw LoL for the League of Legends community to use to have some fun.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+<h3><strong>Features</strong></h3>
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+<ul>
+<li> Choose a category to draw in, either champions or professional players</li>
+<li> Choose a category to guess a drawing made by others, either champions or professional players</li>
+<li> Share drawings through Facebook, Twitter, Pinterest, or google+</li>
+<li> Create an account to "like" drawings and comment on them</li>
+</ul>
