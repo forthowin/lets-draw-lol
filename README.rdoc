@@ -1,10 +1,11 @@
 I created Lets Draw LoL for the League of Legends community to use to have some fun.
 
-<h3><strong>Features</strong></h3>
+== Features
 
-<ul>
-<li> Choose a category to draw in, either champions or professional players</li>
-<li> Choose a category to guess a drawing made by others, either champions or professional players</li>
-<li> Share drawings through Facebook, Twitter, Pinterest, or google+</li>
-<li> Create an account to "like" drawings and comment on them</li>
-</ul>
+* Choose a category to draw in, either champions or professional players
+
+* Choose a category to guess a drawing made by others, either champions or professional players
+
+* Share drawings through Facebook, Twitter, Pinterest, or google+
+
+* Create an account to "like" drawings and comment on them
