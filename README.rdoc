@@ -9,3 +9,5 @@ I created Lets Draw LoL for the League of Legends community to use to have some 
 * Share drawings through Facebook, Twitter, Pinterest, or google+
 
 * Create an account to "like" drawings and comment on them
+
+* Browse the gallery and search by names, order by newest, oldest, most popular, and number of comments
