@@ -44,15 +44,7 @@ class DrawingsController < ApplicationController
       @drawings = Drawing.order('created_at DESC').page(params[:page])
     else
       @search = params[:search].blank? ? "%" : params[:search].gsub(/[^a-zA-Z]/, "")
-      if params[:order] == "Newest" || params[:order].blank?
-        @drawings = Drawing.joins(:picture).where("name LIKE ?", @search).order("created_at DESC").page(params[:page])
-      elsif params[:order] == "Oldest"
-        @drawings = Drawing.joins(:picture).where("name LIKE ?", @search).order("created_at ASC").page(params[:page])
-      elsif params[:order] == "Popularity"
-        @drawings = Drawing.joins(:picture).where("name LIKE ?", @search).select('drawings.*, count(likes.drawing_id) AS like_count').joins('LEFT JOIN likes on drawings.id = likes.drawing_id').group('drawings.id').order('like_count DESC, created_at DESC').page(params[:page])
-      elsif params[:order] == "Comments"
-        @drawings = Drawing.joins(:picture).where("name LIKE ?", @search).select('drawings.*, count(comments.drawing_id) AS comment_count').joins('LEFT JOIN comments on drawings.id = comments.drawing_id').group('drawings.id').order('comment_count DESC, created_at DESC').page(params[:page])
-      end
+      query_drawing_by_order
     end
     @search = nil if @search == "%"
     @order = params[:order]
@@ -69,6 +61,19 @@ class DrawingsController < ApplicationController
       @drawing = Drawing.create(image: params[:image], picture_id: params[:picture_id], category_id: params[:category_id], user: current_user)
     else
       @drawing = Drawing.create(image: params[:image], picture_id: params[:picture_id], category_id: params[:category_id])
+    end
+  end
+
+  def query_drawing_by_order
+    case params[:order]
+    when "Oldest"
+      @drawings = Drawing.joins(:picture).where("name LIKE ?", @search).order("created_at ASC").page(params[:page])
+    when "Popularity"
+      @drawings = Drawing.joins(:picture).where("name LIKE ?", @search).select('drawings.*, count(likes.drawing_id) AS like_count').joins('LEFT JOIN likes on drawings.id = likes.drawing_id').group('drawings.id').order('like_count DESC, created_at DESC').page(params[:page])
+    when "Comments"
+      @drawings = Drawing.joins(:picture).where("name LIKE ?", @search).select('drawings.*, count(comments.drawing_id) AS comment_count').joins('LEFT JOIN comments on drawings.id = comments.drawing_id').group('drawings.id').order('comment_count DESC, created_at DESC').page(params[:page])
+    else
+      @drawings = Drawing.joins(:picture).where("name LIKE ?", @search).order("created_at DESC").page(params[:page])
     end
   end
 end
