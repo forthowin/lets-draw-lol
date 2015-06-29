@@ -3,7 +3,9 @@ Rails.application.routes.draw do
     sessions: 'users/sessions',
     registrations: 'users/registrations'
   }
+  
   root 'pages#front'
+
   get '/draw/champions', to: 'drawings#draw_champion'
   post '/start-draw', to: 'drawings#start_draw'
   get '/draw/pros', to: 'drawings#draw_pros'
@@ -12,8 +14,10 @@ Rails.application.routes.draw do
   post '/start-guess', to: 'drawings#start_guess'
   post '/guess-share-buttons', to: 'drawings#guess_share_buttons'
   get '/users/:id', to: 'users/users#show', as: 'show_user'
+
   resources :drawings, only: [:create, :index, :show] do
     resources :comments, only: [:create]
   end
+
   resources :likes, only: [:create]
 end
