@@ -91,6 +91,26 @@ describe DrawingsController do
       expect(assigns(:drawings)).to eq([drawing4, drawing3, drawing2, drawing1])
     end
 
+    it "assigns @drawings in order of number of likes when order params is 'Popularity'" do
+      bob = Fabricate(:user)
+      alice = Fabricate(:user)
+      Like.create(drawing: drawing2, user: bob)
+      Like.create(drawing: drawing2, user: alice)
+      Like.create(drawing: drawing4, user: bob)
+      get :index, order: "Popularity"
+      expect(assigns(:drawings)).to eq([drawing2, drawing4, drawing3, drawing1])
+    end
+
+    it "assigns @drawings in order of number of comments when order params is 'Comments'" do
+      bob = Fabricate(:user)
+      alice = Fabricate(:user)
+      Comment.create(drawing: drawing3, user: bob, body: 'commenting')
+      Comment.create(drawing: drawing3, user: alice, body: 'commenting')
+      Comment.create(drawing: drawing1, user: bob, body: 'commenting')
+      get :index, order: "Comments"
+      expect(assigns(:drawings)).to eq([drawing3, drawing1, drawing4, drawing2])
+    end
+
     it "assigns @drawings to be only from pictures with the same name as search params" do
       get :index, search: picture1.name
       expect(assigns(:drawings)).to eq([drawing3, drawing2, drawing1])
