@@ -6,4 +6,7 @@ class Drawing < ActiveRecord::Base
   has_many :comments, -> { order("created_at DESC") }
 
   mount_uploader :image, ImageUploader
+
+  scope :newest, -> { order("created_at DESC") }
+  scope :oldest, -> { order("created_at ASC") }
 end
