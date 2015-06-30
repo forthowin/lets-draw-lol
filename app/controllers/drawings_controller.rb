@@ -1,4 +1,5 @@
 class DrawingsController < ApplicationController
+  respond_to :js, only: [:start_draw, :start_guess, :create, :guess_share_buttons]
 
   def draw_champion
   end
@@ -14,24 +15,16 @@ class DrawingsController < ApplicationController
 
   def start_draw
     @picture = Category.find_by(name: params[:picture_type].capitalize).pictures.sample
-    respond_to do |format|
-      format.js
-    end
   end
 
   def start_guess
     @drawing = Category.find_by(name: params[:picture_type].capitalize).drawings.sample
-    respond_to do |format|
-      format.js
-    end
   end
 
   def create
     params[:image].original_filename = SecureRandom.uuid + '.png'
     create_drawing
-    respond_to do |format|
-      format.js { render :draw_share_buttons }
-    end
+    render :draw_share_buttons
   end
 
   def guess_share_buttons
