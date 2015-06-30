@@ -41,7 +41,7 @@ class DrawingsController < ApplicationController
 
   def index
     if params[:search].blank? && params[:order].blank?
-      @drawings = Drawing.order('created_at DESC').page(params[:page])
+      @drawings = Drawing.newest.page(params[:page])
     else
       @search = params[:search].blank? ? "%" : params[:search].gsub(/[^a-zA-Z]/, "")
       query_drawing_by_order
