@@ -27,4 +27,17 @@ class Drawing < ActiveRecord::Base
       .group('drawings.id')
       .order('comment_count DESC, created_at DESC')
   end
+
+  def self.order_by_dropdown(type, search_term)
+    case type
+    when "Oldest"
+      joins(:picture).where("name LIKE ?", search_term).oldest
+    when "Popularity"
+      popular(search_term)
+    when "Comments"
+      most_comments(search_term)
+    else
+      joins(:picture).where("name LIKE ?", search_term).newest
+    end
+  end
 end
