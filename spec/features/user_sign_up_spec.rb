@@ -6,14 +6,14 @@ feature 'user signs up', :js do
     given(:email) { 'forthowin@gmail.com' }
     given(:password) { 'password' }
 
-    scenario 'the user logs in at the front page' do
+    scenario 'the user signs in at the front page' do
       visit root_path
       click_link 'REGISTERING'
       fill_in_sign_up_form_with_valid_input
       expect(page).to have_content 'forthowin'
     end
 
-    scenario 'the user logs in at the gallery page' do
+    scenario 'the user signs at the gallery page' do
       visit drawings_path
       expect(page).to have_content 'Gallery'
       click_link 'Login/SignUp'
