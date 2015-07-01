@@ -23,6 +23,19 @@ feature 'user signs up', :js do
     expect(page).to have_content 'Gallery'
   end
 
+  scenario 'the user signs in with invalid inputs' do
+    visit root_path
+    click_link 'REGISTERING'
+    fill_in_sign_up_form_with_invalid_input
+    expect(page).to have_content "can't be blank"
+    expect(page).to have_content 'is too short (minimum is 5 characters)'
+  end
+
+  def fill_in_sign_up_form_with_invalid_input
+    fill_in 'Password', with: 'pass'
+    click_button 'Sign up'
+  end
+
   def fill_in_sign_up_form_with_valid_input
     fill_in 'Username', with: username
     fill_in 'Email', with: email
