@@ -3,29 +3,33 @@
   .front-gallery.image-gallery
     = render '/drawings/drawings'
 
-  .front-list
-    %h3
+  .front-listing
+    %h3 You only have 60 seconds!
+    %h4
       Draw either a random #{ link_to 'CHAMPION', draw_champions_path, class: 'front-links' }
-      or a random #{ link_to 'PROFESSIONAL PLAYER', draw_pros_path, class: 'front-links' }. You only have 60 seconds!
+      or a random #{ link_to 'PROFESSIONAL PLAYER', draw_pros_path, class: 'front-links' }.
 
-    %h3
+  .front-listing
+    %h3 Who's that Champion!?!
+    %h4
       Guess a drawing of a random #{link_to 'CHAMPION', guess_champions_path, class: 'front-links'}
-      or a random #{ link_to 'PROFESSIONAL PLAYER', guess_pros_path, class: 'front-links' } drawn by others!
+      or a random #{ link_to 'PROFESSIONAL PLAYER', guess_pros_path, class: 'front-links' } drawn by others.
 
-    %h3
-      Check out the drawings of others at the #{ link_to 'GALLERY', drawings_path, class: 'front-links'}!
+  .front-listing
+    %h3 Show off your work of art!
+    %h4
+      Share your drawings on social media like Facebook and Twitter.
 
-    %h3
-      Share your drawings on social media like Facebook and Twitter!
-
-    %h3
-      Benefits of 
-      - if user_signed_in?
-        REGISTERING
-      -else
-        = link_to 'REGISTERING', new_user_registration_path, remote: true, class: 'front-links'
-      for an account:
-      %ul
-        %li A Profile to view all of your drawn pictures
-        %li Ability to comment on drawings
-        %li Ability to "Like" drawings
+.reg-info
+  %h3
+    Benefits of 
+    - if user_signed_in?
+      REGISTERING
+    -else
+      = link_to 'REGISTERING', new_user_registration_path, remote: true, class: 'front-links'
+    for a free account:
+  %h4
+    %ul
+      %li A Profile to view all of your drawn pictures
+      %li Ability to comment on drawings
+      %li Ability to "Like" drawings
