@@ -1,5 +1,7 @@
 .front
   %h1 Draw, Guess, and Share Your Favorite League of Legends Champions and Professional Players
+  #front-top-ad
+    = render partial: '/layouts/top_ad.js'
   .front-gallery.image-gallery
     = render '/drawings/drawings'
 
@@ -34,4 +36,6 @@
       %li Ability to comment on drawings
       %li Ability to "Like" drawings
       
-= render partial: '/layouts/bottom_ad.js'
+#bottom-ad
+  = render partial: '/layouts/bottom_left_ad.js'
+  = render partial: '/layouts/bottom_right_ad.js'
