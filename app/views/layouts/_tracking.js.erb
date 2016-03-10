@@ -1,0 +1,21 @@
+<script>
+    if(document.location.pathname.substring(0,16) == "/guess/champions") {
+      jQuery('#start-button').on('click', function() {
+        ga('send', 'event', 'Button', 'click', 'Guess Champion');
+      });
+    }
+    
+    if(document.location.pathname.substring(0,10) == "/guess/pros") {
+      jQuery('#start-button').on('click', function() {
+        ga('send', 'event', 'Button', 'click', 'Guess Pro');
+      });
+    }
+    
+    jQuery('#search-button').on('click', function() {
+      ga('send', 'event', 'Button', 'click', 'Sort');
+    });
+    
+    jQuery('#paypal-donate').on('click', function() {
+      ga('send', 'event', 'Button', 'click', 'PayPal Donate');
+    });
+</script>
