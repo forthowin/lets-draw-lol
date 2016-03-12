@@ -21,5 +21,5 @@ Rails.application.routes.draw do
 
   resources :likes, only: [:create]
   
-  match '/sitemap1.xml' => 'sitemaps#show'
+  get '/sitemap.xml' => 'sitemaps#show'
 end
