@@ -20,4 +20,6 @@ Rails.application.routes.draw do
   end
 
   resources :likes, only: [:create]
+  
+  match '/sitemap1.xml' => 'sitemaps#show'
 end
